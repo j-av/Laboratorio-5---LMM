@@ -1,7 +1,6 @@
 from core import run_llm
 import streamlit as st
 from streamlit_chat import message
-#DONE
 
 st.header("Spark 2.4.7 - Documentation Helper Bot")
 
