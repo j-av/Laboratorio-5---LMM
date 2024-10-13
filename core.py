@@ -9,18 +9,18 @@ from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from pinecone import Pinecone, ServerlessSpec
 from langchain_community.vectorstores import Pinecone as PineconeLangChain
 
-# Cargar variables de entorno
+
 load_dotenv()
 
 # Obtener las variables necesarias
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
 PINECONE_ENV = os.getenv("PINECONE_ENV", "us-west1-gcp")
-INDEX_NAME = os.getenv("INDEX_NAME")  # Asegúrate de que esta línea esté aquí
+INDEX_NAME = os.getenv("INDEX_NAME")
 
-# Crear una instancia de Pinecone
+
 pc = Pinecone(api_key=PINECONE_API_KEY)
 
-# Verificar si el índice existe
+
 if INDEX_NAME not in pc.list_indexes().names():
     pc.create_index(
         name=INDEX_NAME,
@@ -32,13 +32,13 @@ if INDEX_NAME not in pc.list_indexes().names():
 def test_pinecone_search(query: str):
     embeddings = OpenAIEmbeddings()
     
-    # Crear vector store desde el índice existente
+    
     vectorstore = PineconeLangChain.from_existing_index(
         index_name=INDEX_NAME, embedding=embeddings
     )
 
     print(f"Running search for query: '{query}'")
-    docs = vectorstore.similarity_search(query, 3)  # Cambia el número si lo deseas
+    docs = vectorstore.similarity_search(query, 3) 
 
     if docs:
         print(f"Found {len(docs)} documents.")
