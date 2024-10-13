@@ -8,7 +8,6 @@ from langchain_pinecone import PineconeVectorStore
 
 from langchain_community.document_loaders import ReadTheDocsLoader
 
-#DONE
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
