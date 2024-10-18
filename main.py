@@ -2,7 +2,7 @@ from core import run_llm
 import streamlit as st
 from streamlit_chat import message
 
-st.header("Spark 2.4.7 - Documentation Helper Bot")
+st.header("Documentation Helper Bot")
 
 prompt = st.text_input("Prompt", placeholder="Enter your prompt here")
 
